@@ -7,13 +7,15 @@
 
 body {
   background: #1e2a5a;
+  min-height: 100vh;
 }
 
 /* MAIN CONTAINER */
 .bg-container {
-  max-width: 900px;
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
+  max-height: 800px;
 }
 
 /* TITLE */
@@ -65,6 +67,7 @@ h1 {
 .search-row input[type="text"] {
   flex: 1;
   padding: 8px;
+  border-radius: 5px;
 }
 
 .search-row input[type="submit"] {
@@ -73,6 +76,7 @@ h1 {
   border: none;
   color: white;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 /* SEARCH HISTORY BUTTONS */
@@ -82,12 +86,11 @@ h1 {
 
 #searchHistory button {
   margin: 5px;
-  padding: 5px 10px;
+  padding: 10px 20px;
   background: orange;
   border: none;
   border-radius: 12px;
   color: white;
-  cursor: pointer;
 }
 
 /* WEATHER INFO TEXT */
@@ -110,6 +113,25 @@ h1 {
 .bluebox {
   margin-top: 10px;
   background: #0d1b4c;
-  height: 100px;
-  border-radius: 5px;
+  padding: 15px;
+  border-radius: 6px;
+  color: #cbd5ff;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.bluebox p {
+  margin: 6px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* small number box */
+.bluebox p span {
+  background: #4a6cf7;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
 }

@@ -2,6 +2,14 @@ const form = document.querySelector("#weatherform");
 const city = document.querySelector("#city");
 const container = document.querySelector(".info");
 const history = document.querySelector("#searchHistory");
+const consoleBox = document.querySelector("#consoleBox");
+
+// ✅ log function (no auto scroll)
+function logMessage(msg) {
+  const p = document.createElement("p");
+  p.textContent = msg;
+  consoleBox.appendChild(p);
+}
 
 let visitedCities = JSON.parse(localStorage.getItem("visitedCities")) || [];
 
@@ -9,12 +17,30 @@ const API_KEY = "d0b4bd2cdbb42ae1a0998288414eacea";
 
 async function searchWeather(cityName) {
   try {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`,
+    consoleBox.innerHTML = ""; // clear old logs
+
+    // ✅ EVENT LOOP START
+    logMessage("1️⃣ Sync Start");
+
+    const responsePromise = fetch(
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`
     );
+
+    logMessage("[ASYNC] Start fetching");
+
+    logMessage("2️⃣ Sync End"); // ✅ correct position
+
+    const response = await responsePromise;
+
+    logMessage("3️⃣ Promise.then (Microtask)");
 
     const weatherData = await response.json();
 
+    setTimeout(() => {
+      logMessage("4️⃣ setTimeout (Macrotask)");
+    }, 0);
+
+    // ✅ UI UPDATE
     if (weatherData.cod == 200) {
       container.innerHTML = `
         <h3>Weather Info</h3>
@@ -24,6 +50,8 @@ async function searchWeather(cityName) {
         <p>Humidity: ${weatherData.main.humidity}</p>
         <p>Wind: ${weatherData.wind.speed} m/s</p>
       `;
+
+      logMessage("[ASYNC] Data received");
 
       if (!visitedCities.includes(cityName)) {
         visitedCities.push(cityName);
@@ -42,6 +70,7 @@ async function searchWeather(cityName) {
   }
 }
 
+// ✅ FORM SUBMIT
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -52,14 +81,16 @@ form.addEventListener("submit", (e) => {
   }
 });
 
+// ✅ HISTORY BUTTONS
 function showHistory() {
   history.innerHTML = "";
 
   const cities = JSON.parse(localStorage.getItem("visitedCities")) || [];
 
   cities.forEach((cityName) => {
-    const btn = document.createElement("button");
+    if (typeof cityName !== "string") return;
 
+    const btn = document.createElement("button");
     btn.textContent = cityName;
 
     btn.addEventListener("click", () => {
