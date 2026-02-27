@@ -7,7 +7,6 @@ let visitedCities = JSON.parse(localStorage.getItem("visitedCities")) || [];
 
 const API_KEY = "d0b4bd2cdbb42ae1a0998288414eacea";
 
-// ✅ NEW FUNCTION (reusable)
 async function searchWeather(cityName) {
   try {
     const response = await fetch(
@@ -26,7 +25,6 @@ async function searchWeather(cityName) {
         <p>Wind: ${weatherData.wind.speed} m/s</p>
       `;
 
-      // ✅ FIX: use cityName (string), not city element
       if (!visitedCities.includes(cityName)) {
         visitedCities.push(cityName);
         localStorage.setItem("visitedCities", JSON.stringify(visitedCities));
@@ -44,7 +42,6 @@ async function searchWeather(cityName) {
   }
 }
 
-// ✅ FIXED SUBMIT
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -55,7 +52,6 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// ✅ FIXED HISTORY FUNCTION
 function showHistory() {
   history.innerHTML = "";
 
@@ -66,7 +62,6 @@ function showHistory() {
 
     btn.textContent = cityName;
 
-    // ✅ click works now
     btn.addEventListener("click", () => {
       searchWeather(cityName);
     });
@@ -75,5 +70,4 @@ function showHistory() {
   });
 }
 
-// ✅ LOAD HISTORY ON START
 showHistory();
