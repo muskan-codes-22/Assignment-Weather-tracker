@@ -72,7 +72,7 @@ h1 {
 
 .search-row input[type="submit"] {
   padding: 8px 12px;
-  background: orange;
+  background: rgb(255, 136, 0);
   border: none;
   color: white;
   cursor: pointer;
@@ -87,7 +87,7 @@ h1 {
 #searchHistory button {
   margin: 5px;
   padding: 10px 20px;
-  background: orange;
+  background: rgb(255, 136, 0);
   border: none;
   border-radius: 12px;
   color: white;
@@ -98,7 +98,7 @@ h1 {
   padding: 8px;
   margin-bottom: 5px;
   background: #eee;
-  border-left: 4px solid orange;
+  border-left: 4px solid rgb(255, 136, 0);
 }
 
 /* CONSOLE */
