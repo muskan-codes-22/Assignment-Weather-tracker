@@ -4,7 +4,6 @@ const container = document.querySelector(".info");
 const history = document.querySelector("#searchHistory");
 const consoleBox = document.querySelector("#consoleBox");
 
-// ✅ log function (no auto scroll)
 function logMessage(msg) {
   const p = document.createElement("p");
   p.textContent = msg;
@@ -17,18 +16,17 @@ const API_KEY = "d0b4bd2cdbb42ae1a0998288414eacea";
 
 async function searchWeather(cityName) {
   try {
-    consoleBox.innerHTML = ""; // clear old logs
+    consoleBox.innerHTML = "";
 
-    // ✅ EVENT LOOP START
     logMessage("1️⃣ Sync Start");
 
     const responsePromise = fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${API_KEY}`,
     );
 
     logMessage("[ASYNC] Start fetching");
 
-    logMessage("2️⃣ Sync End"); // ✅ correct position
+    logMessage("2️⃣ Sync End");
 
     const response = await responsePromise;
 
@@ -40,7 +38,6 @@ async function searchWeather(cityName) {
       logMessage("4️⃣ setTimeout (Macrotask)");
     }, 0);
 
-    // ✅ UI UPDATE
     if (weatherData.cod == 200) {
       container.innerHTML = `
         <h3>Weather Info</h3>
@@ -70,7 +67,6 @@ async function searchWeather(cityName) {
   }
 }
 
-// ✅ FORM SUBMIT
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -81,7 +77,6 @@ form.addEventListener("submit", (e) => {
   }
 });
 
-// ✅ HISTORY BUTTONS
 function showHistory() {
   history.innerHTML = "";
 

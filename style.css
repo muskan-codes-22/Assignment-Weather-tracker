@@ -10,29 +10,26 @@ body {
   min-height: 100vh;
 }
 
-/* MAIN CONTAINER */
 .bg-container {
   max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  max-height: 800px;
+  min-height: 100vh;
 }
 
-/* TITLE */
 h1 {
   text-align: center;
   color: white;
   margin-bottom: 20px;
+  font-size: 2.5em;
 }
 
-/* TOP SECTION */
 .box1 {
   display: flex;
   gap: 15px;
   margin-bottom: 20px;
 }
 
-/* LEFT SIDE (search + history) */
 .left {
   width: 50%;
   display: flex;
@@ -40,7 +37,6 @@ h1 {
   gap: 15px;
 }
 
-/* RIGHT SIDE (weather) */
 .weather-info {
   width: 50%;
   background: #f5f5f5;
@@ -48,7 +44,6 @@ h1 {
   border-radius: 8px;
 }
 
-/* CARDS */
 .weather_form,
 .search-history,
 .console {
@@ -57,7 +52,6 @@ h1 {
   border-radius: 8px;
 }
 
-/* SEARCH INPUT + BUTTON */
 .search-row {
   display: flex;
   gap: 10px;
@@ -79,7 +73,6 @@ h1 {
   border-radius: 5px;
 }
 
-/* SEARCH HISTORY BUTTONS */
 #searchHistory {
   margin-top: 10px;
 }
@@ -93,7 +86,6 @@ h1 {
   color: white;
 }
 
-/* WEATHER INFO TEXT */
 .info p {
   padding: 8px;
   margin-bottom: 5px;
@@ -101,7 +93,6 @@ h1 {
   border-left: 4px solid rgb(255, 136, 0);
 }
 
-/* CONSOLE */
 .box-3 {
   margin-top: 10px;
 }
@@ -118,6 +109,7 @@ h1 {
   color: #cbd5ff;
   font-family: monospace;
   font-size: 14px;
+  min-height: 180px;
 }
 
 .bluebox p {
@@ -127,7 +119,6 @@ h1 {
   gap: 10px;
 }
 
-/* small number box */
 .bluebox p span {
   background: #4a6cf7;
   color: white;
